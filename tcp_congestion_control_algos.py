@@ -1,13 +1,11 @@
 from abc import ABC, abstractmethod
-import numpy as np
-import matplotlib.pyplot as plt
 import math
 
 class CongestionControlAlgo(ABC):
-    def __init__(self, init_window=0) -> None:
+    def __init__(self, init_window=0, alpha=1, beta=0.5) -> None:
         super().__init__()
-        self.alpha = 1
-        self.beta = 0.5
+        self.alpha = alpha
+        self.beta = beta
         self.cur_win = init_window
 
     @abstractmethod
@@ -19,8 +17,8 @@ class CongestionControlAlgo(ABC):
         pass
 
 class TCP(CongestionControlAlgo):
-    def __init__(self, init_window=0) -> None:
-        super().__init__(init_window)
+    def __init__(self, init_window=0, alpha=1, beta=0.5) -> None:
+        super().__init__(init_window=init_window, alpha=alpha, beta=beta)
 
     def additiveIncrease(self):
         self.cur_win += self.alpha
@@ -32,7 +30,7 @@ class TCP(CongestionControlAlgo):
 
 class HSTCP(CongestionControlAlgo):
     def __init__(self, init_window=0) -> None:
-        super().__init__(init_window)
+        super().__init__(init_window=init_window)
         # HighSpeed TCP params as suggested in RFC3649
         self.High_Window = 83000
         self.High_Decrease = 0.1
@@ -67,7 +65,7 @@ class HSTCP(CongestionControlAlgo):
     
 class ScalableTCP(CongestionControlAlgo):
     def __init__(self, init_window=0) -> None:
-        super().__init__(init_window)
+        super().__init__(init_window=init_window)
         # Scalable TCP params
         self.Low_Window = 19
         self.beta = 0.125
@@ -91,7 +89,7 @@ class ScalableTCP(CongestionControlAlgo):
     
 class CUBIC(CongestionControlAlgo):
     def __init__(self, init_window=0) -> None:
-        super().__init__(init_window)
+        super().__init__(init_window=init_window)
         # CUBIC params
         self.C = 0.01
         self.beta = 0.2

@@ -27,6 +27,8 @@ elif str(args.type).lower() == 'scalabletcp' or str(args.type).lower() == 'scala
     othertcp = tcp.ScalableTCP
 elif str(args.type).lower() == 'cubic':
     othertcp = tcp.CUBIC
+elif str(args.type).lower() == 'tcp':
+    othertcp = tcp.TCP
 else:
     raise ValueError("Please choose a type of TCP from: HSTCP, ScalableTCP, or CUBIC!")
 
