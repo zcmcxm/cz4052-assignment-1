@@ -1,6 +1,6 @@
 # CZ4052 Assignment 1
 
-## Purpose of each file
+## Purpose of Each File
 
 `images`: store all the images in the report.<br>
 `congestion_window_growth_comparison.py`: it belongs to Section 1 and compares the growth of window size of a TCP congestion control procedure with that of the standard TCP.<br>
@@ -22,7 +22,7 @@ python two_user_fairness.py -t scalable
 python congestion_window_growth_comparison.py -t scalable
 ```
 
-## Section 2 - Multi-user Experiments
+## Section 2 - Multi-User Experiments
 
 ```
 # simulate multi-user scenario with the standard TCP
